@@ -1,0 +1,2 @@
+language: rust
+after_success: chmod +x push-rustdoc-pages.sh && ./push-rustdoc-pages.sh    

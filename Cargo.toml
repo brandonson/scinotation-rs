@@ -1,0 +1,10 @@
+[package]
+
+name = "scinotation"
+description = "A library for representing numbers in scientific notation"
+version = "0.0.1"
+authors = ["Brandon Sanderson <bas.bsanders@gmail.com>"]
+repository = "http://github.com/brandonson/scinotation-rs"
+license = "MIT"
+documentation = "http://brandonson.github.io/scinotation-rs"
+readme = README.md
