@@ -7,4 +7,4 @@ authors = ["Brandon Sanderson <bas.bsanders@gmail.com>"]
 repository = "http://github.com/brandonson/scinotation-rs"
 license = "MIT"
 documentation = "http://brandonson.github.io/scinotation-rs"
-readme = README.md
+readme = "README.md"
