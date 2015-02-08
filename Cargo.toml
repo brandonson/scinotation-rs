@@ -2,7 +2,7 @@
 
 name = "scinotation"
 description = "A library for representing numbers in scientific notation"
-version = "0.0.1"
+version = "0.0.2"
 authors = ["Brandon Sanderson <bas.bsanders@gmail.com>"]
 repository = "http://github.com/brandonson/scinotation-rs"
 license = "MIT"

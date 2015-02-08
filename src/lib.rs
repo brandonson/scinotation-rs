@@ -62,9 +62,41 @@ impl<B:Int, E:SignedInt> SciValue<B,E> {
     SciValue{base: newbase, e_exp: self.e_exp * exp}
   }
 
+
 }
 
 impl<B:Int + FromPrimitive, E:SignedInt> SciValue<B,E> {
+  /**
+   * Converts the number to its full representation,
+   * out of scientific notation.  Returns None if
+   * an exact representation is not possible.
+   *
+   * An exact representation is not possible
+   * when the exponent is < 0, and when the full
+   * representation would be greater than the maximum
+   * value of the base type.
+   */
+  pub fn to_full_value(self) -> Option<B> {
+    if self.e_exp < <E as Int>::zero(){
+      return None;
+    }
+
+
+    let type_b_10 = <B as FromPrimitive>::from_int(10is).expect("Couldn't get a 10 value");
+
+    let mut full_val = self.base;
+    let mut remaining_exp  = self.e_exp;
+    while remaining_exp > (<E as Int>::zero()) {
+      if full_val > <B as Int>::max_value() / type_b_10 {
+        return None;
+      }
+
+      full_val = full_val * type_b_10;
+      remaining_exp = remaining_exp - <E as Int>::one();
+    }
+    Some(full_val)
+  }
+
   pub fn reduce(&self) -> SciValue<B,E> {
     let mut new_base = self.base.clone();
     let mut new_exp  = self.e_exp;
@@ -182,7 +214,6 @@ fn match_exponents_rhs_greater<B:Int + FromPrimitive,E:SignedInt>(lhs:SciValue<B
 
 #[cfg(test)]
 mod test{
-  use std::num::SignedInt;
   use super::SciValue;
   use super::match_exponents;
 
@@ -292,5 +323,11 @@ mod test{
 
     let val2 = SciValue::wrap_with_exponent(11, 2is);
     assert_eq!(val2.pow(4), SciValue::wrap_with_exponent(14641, 8is));
+  }
+
+  #[test]
+  fn value_extraction(){
+    assert_eq!(SciValue::wrap_with_exponent(21us, 2is).to_full_value(), Some(2100));
+    assert_eq!(SciValue::wrap_with_exponent(10us, -1is).to_full_value(), None);
   }
 }
