@@ -1,0 +1,3 @@
+var searchIndex = {};
+searchIndex['scinotation'] = {"items":[[0,"","scinotation",""],[3,"SciValue","","Structure storing a number in a format similar\nto scientific notation."],[11,"wrap","","",0],[11,"wrap_with_exponent","","",0],[11,"pow","","",0],[11,"to_full_value","","Converts the number to its full representation,\nout of scientific notation.  Returns None if\nan exact representation is not possible.",0],[11,"reduce","","",0],[11,"fmt","","",0],[11,"clone","","",0],[11,"eq","","",0],[11,"partial_cmp","","",0],[11,"cmp","","",0],[6,"Output","",""],[11,"add","","",0],[6,"Output","",""],[11,"sub","","",0],[6,"Output","",""],[11,"mul","","",0],[6,"Output","",""],[11,"div","","",0]],"paths":[[3,"SciValue"]]};
+initSearch(searchIndex);
